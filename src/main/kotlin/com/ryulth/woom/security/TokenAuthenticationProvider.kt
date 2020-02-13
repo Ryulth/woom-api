@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 @Component
 class TokenAuthenticationProvider(
     private val tokenProvider: TokenProvider
-): AuthenticationProvider {
+) : AuthenticationProvider {
     override fun authenticate(authentication: Authentication): Authentication {
         val token = authentication.principal as String
         return tokenProvider.verifyToken(token, true)

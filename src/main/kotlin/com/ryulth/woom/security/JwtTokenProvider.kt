@@ -9,13 +9,12 @@ import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.MalformedJwtException
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.UnsupportedJwtException
+import java.nio.charset.StandardCharsets
+import java.util.Date
 import mu.KLogging
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.stereotype.Component
-import java.nio.charset.StandardCharsets
-import java.util.Date
-
 
 @Component
 class JwtTokenProvider(
@@ -66,7 +65,7 @@ class JwtTokenProvider(
         var message = ""
         try {
             Jwts.parser().setSigningKey(this.generateKey(key)).parseClaimsJws(token)
-            val claims= Jwts.parser().setSigningKey(this.generateKey(key))
+            val claims = Jwts.parser().setSigningKey(this.generateKey(key))
                 .parseClaimsJws(token).getBody()
             return UserSession(
                 userId = (claims[AUTHORITIES_ID] as Int).toLong(),

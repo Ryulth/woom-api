@@ -23,7 +23,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher
 
 @Configuration
 @EnableWebSecurity
-class WebSecurityConfig (
+class WebSecurityConfig(
     private val provider: TokenAuthenticationProvider?
 ) : WebSecurityConfigurerAdapter() {
 
