@@ -28,31 +28,40 @@ class CategoryInfoService(
         categories.forEach { category ->
             categoryCodeSet.add(category.categoryCode)
             category.upperCategoryCode?.let {
-                val categoryInfo = categoryInfoMap.getOrPut(category.upperCategoryCode,
+                val categoryInfo = categoryInfoMap.getOrPut(
+                    category.upperCategoryCode,
                     {
                         CategoryInfo(
                             categoryCode = category.upperCategoryCode,
-                            categoryInfos = mutableSetOf()
+                            categoryInfos = mutableSetOf(),
+                            userCount = 0,
+                            postCount = 0
                         )
                     })
                 categoryInfo.categoryInfos?.add(
                     CategoryInfo(
                         categoryCode = category.categoryCode,
-                        categoryInfos = null
+                        userCount = category.userCount,
+                        postCount = category.postCount
                     )
                 )
             } ?: run {
-                categoryInfoMap.putIfAbsent(
+                val categoryInfo = categoryInfoMap.getOrPut(
                     category.categoryCode,
-                    CategoryInfo(
-                        categoryCode = category.categoryCode,
-                        categoryInfos = mutableSetOf()
-                    )
+                    {
+                        CategoryInfo(
+                            categoryCode = category.categoryCode,
+                            categoryInfos = mutableSetOf(),
+                            userCount = category.userCount,
+                            postCount = category.postCount
+                        )
+                    }
                 )
+                categoryInfo.userCount = category.userCount
+                categoryInfo.postCount = category.postCount
             }
         }
         categoryInfo = CategoryInfo(
-            categoryCode = null,
             categoryInfos = categoryInfoMap.values.toMutableSet()
         )
     }

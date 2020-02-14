@@ -9,4 +9,12 @@ class CategoryService (
     private val categoryRepository: CategoryRepository
 ) {
     fun findAll(): List<Category> = categoryRepository.findAll()
+
+    fun plusUserCount(categoryCode: String) {
+        categoryRepository.plusUserCountByCategoryCode(categoryCode)
+    }
+
+    fun plusPostCount(categoryCode: String) {
+        categoryRepository.plusPostCountByCategoryCode(categoryCode)
+    }
 }

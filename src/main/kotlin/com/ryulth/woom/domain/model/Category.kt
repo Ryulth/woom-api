@@ -13,5 +13,7 @@ data class Category(
      * null 이면 최상위
      */
     val upperCategoryCode: String?,
-    val description: String?
+    val description: String?,
+    val userCount: Long,
+    val postCount: Long
 )
