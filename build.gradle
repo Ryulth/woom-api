@@ -46,6 +46,7 @@ dependencies {
     implementation  "org.springframework.boot:spring-boot-starter-security:$spring_boot_version"
     implementation  "org.springframework.boot:spring-boot-starter-webflux:$spring_boot_version"
     implementation  "org.springframework.boot:spring-boot-starter-data-mongodb:$spring_boot_version"
+    implementation  "io.github.boostchicken:spring-data-dynamodb:5.2.1"
     implementation  "org.springframework.integration:spring-integration-mqtt"
     implementation  "org.springframework.integration:spring-integration-stream"
     compile group: "org.projectreactor", name: "reactor-spring", version: "1.0.1.RELEASE"
