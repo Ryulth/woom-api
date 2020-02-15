@@ -40,9 +40,9 @@ class EmailAccountService(
                 publicEmail = emailRegisterRequest.email,
                 loginType = emailRegisterRequest.loginType,
                 userName = UserName(
-                    firstName = emailRegisterRequest.firstName,
-                    lastName = emailRegisterRequest.lastName,
-                    nickName = emailRegisterRequest.nickName
+                    firstName = "",
+                    lastName = "",
+                    nickName = ""
                 ),
                 interestedCategorySet = hashSetOf(),
                 hasCategorySet = hashSetOf()

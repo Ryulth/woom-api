@@ -39,9 +39,9 @@ class AppleAccountService(
                 woomId = appleRegisterRequest.appleId + APPLE_POSTFIX,
                 loginType = appleRegisterRequest.loginType,
                 userName = UserName(
-                    firstName = appleRegisterRequest.firstName,
-                    lastName = appleRegisterRequest.lastName,
-                    nickName = appleRegisterRequest.nickName
+                    firstName = "",
+                    lastName = "",
+                    nickName = ""
                 ),
                 interestedCategorySet = hashSetOf(),
                 hasCategorySet = hashSetOf()

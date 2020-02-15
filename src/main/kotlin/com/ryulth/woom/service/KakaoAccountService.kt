@@ -38,9 +38,9 @@ class KakaoAccountService(
                 woomId = kakaoRegisterRequest.kakaoId + KAKAO_POSTFIX,
                 loginType = kakaoRegisterRequest.loginType,
                 userName = UserName(
-                    firstName = kakaoRegisterRequest.firstName,
-                    lastName = kakaoRegisterRequest.lastName,
-                    nickName = kakaoRegisterRequest.nickName
+                    firstName = "",
+                    lastName = "",
+                    nickName = ""
                 ),
                 interestedCategorySet = hashSetOf(),
                 hasCategorySet = hashSetOf()

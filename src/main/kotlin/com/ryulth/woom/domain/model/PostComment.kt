@@ -28,15 +28,6 @@ data class PostComment(
     var content: String = "",
 
     @DynamoDBAttribute
-    var hasCategorySet: MutableSet<String>? = mutableSetOf(),
-
-    @DynamoDBAttribute
-    var wantCategorySet: MutableSet<String>? = mutableSetOf(),
-
-    @DynamoDBAttribute
-    var location: String = "",
-
-    @DynamoDBAttribute
     @DynamoDBTypeConverted(converter = LocalDateTimeDynamoDBConverter::class)
     var createdAt: LocalDateTime = LocalDateTime.now()
 )
