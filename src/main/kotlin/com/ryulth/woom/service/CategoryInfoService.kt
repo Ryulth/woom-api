@@ -69,4 +69,7 @@ class CategoryInfoService(
     fun getCategoryInfo() = categoryInfo
 
     fun checkCategoryCode(categoryCode: String) = categoryCodeSet.contains(categoryCode)
+
+    fun filterCategoryCodeSet(inputCategoryCodeSet: Set<String>) =
+        inputCategoryCodeSet.filter { this.checkCategoryCode(it) }.toMutableSet()
 }

@@ -54,14 +54,11 @@ class PostInfoService(
 
         return PostInfos(postInfos)
     }
+
     fun createPost(postCreateRequest: PostCreateRequest): PostInfo {
         val authorId = userSessionService.getCurrentUserSession().userId
-        val filteredMyCategorySet = postCreateRequest.hasCategorySet
-            .filter { categoryInfoService.checkCategoryCode(it) }
-            .toMutableSet()
-        val filteredWantCategorySet = postCreateRequest.wantCategorySet
-            .filter { categoryInfoService.checkCategoryCode(it) }
-            .toMutableSet()
+        val filteredMyCategorySet = categoryInfoService.filterCategoryCodeSet(postCreateRequest.hasCategorySet)
+        val filteredWantCategorySet = categoryInfoService.filterCategoryCodeSet(postCreateRequest.wantCategorySet)
 
         val post = postService.save(
             Post(

@@ -8,6 +8,7 @@ data class UserInfo(
     val lastName: String?,
     val nickName: String,
 
+    val aboutMe: String?,
     val interestedCategorySet: Set<String>,
     val hasCategorySet: Set<String>,
 

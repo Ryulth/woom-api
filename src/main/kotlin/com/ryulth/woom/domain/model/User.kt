@@ -24,18 +24,20 @@ data class User(
     val userName: UserName,
 
     @Embedded
-    val userImage: UserImage,
+    var userImage: UserImage,
 
     val publicEmail: String? = null,
 
     @Enumerated(STRING)
     val loginType: LoginType,
 
-    @Lob
-    @Convert(converter = StringSetConverter::class)
-    val interestedCategorySet: Set<String>,
+    var aboutMe: String? = null,
 
     @Lob
     @Convert(converter = StringSetConverter::class)
-    val hasCategorySet: Set<String>
+    var interestedCategorySet: Set<String>,
+
+    @Lob
+    @Convert(converter = StringSetConverter::class)
+    var hasCategorySet: Set<String>
 )
