@@ -18,32 +18,32 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/posts")
 class PostController(
     private val postInfoService: PostInfoService
 ) {
-    @ApiOperation(value = "Get post", notes = "dynamodb test ")
-    @GetMapping("/posts")
+    @ApiOperation(value = "Get post ", notes = "category code 가 없으면 전체 검 ")
+    @GetMapping
     fun getPosts2(@RequestParam("categoryCode", required = false)categoryCode: String?): ResponseEntity<PostInfos> {
         return ResponseEntity.ok(postInfoService.getPosts(categoryCode))
     }
 
-    @ApiOperation(value = "create post", notes = "dynamodb create ")
+    @ApiOperation(value = "create post", notes = "create ")
     @Transactional
-    @PostMapping("/post")
+    @PostMapping
     fun createPost(@RequestBody postCreateRequest: PostCreateRequest): ResponseEntity<PostInfo> {
         return ResponseEntity.ok(postInfoService.createPost(postCreateRequest))
     }
 
-    @ApiOperation(value = "get post by id", notes = "dynamodb create ")
-    @GetMapping("/posts/{postId}")
+    @ApiOperation(value = "get post by id", notes = "post id 로 가져옴 ")
+    @GetMapping("/{postId}")
     fun getPostById(@PathVariable("postId") postId: String): ResponseEntity<PostInfo> {
         return ResponseEntity.ok(postInfoService.getPostById(postId))
     }
 
-    @ApiOperation(value = "create comment", notes = "dynamodb create ")
+    @ApiOperation(value = "create comment", notes = "댓글 달기 ")
     @Transactional
-    @PostMapping("/posts/{postId}/comment")
+    @PostMapping("/{postId}/comment")
     fun createComment(
         @PathVariable("postId") postId: String,
         @RequestBody postCommentCreateRequest: PostCommentCreateRequest

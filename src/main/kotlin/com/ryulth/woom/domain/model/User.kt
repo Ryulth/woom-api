@@ -23,6 +23,9 @@ data class User(
     @Embedded
     val userName: UserName,
 
+    @Embedded
+    val userImage: UserImage,
+
     val publicEmail: String? = null,
 
     @Enumerated(STRING)

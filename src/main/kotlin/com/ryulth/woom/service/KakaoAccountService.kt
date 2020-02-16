@@ -4,6 +4,7 @@ import com.ryulth.woom.domain.KakaoUserService
 import com.ryulth.woom.domain.UserService
 import com.ryulth.woom.domain.model.KakaoUser
 import com.ryulth.woom.domain.model.User
+import com.ryulth.woom.domain.model.UserImage
 import com.ryulth.woom.domain.model.UserName
 import com.ryulth.woom.dto.KakaoLoginRequest
 import com.ryulth.woom.dto.KakaoRegisterRequest
@@ -38,12 +39,16 @@ class KakaoAccountService(
                 woomId = kakaoRegisterRequest.kakaoId + KAKAO_POSTFIX,
                 loginType = kakaoRegisterRequest.loginType,
                 userName = UserName(
-                    firstName = "",
-                    lastName = "",
+                    firstName = null,
+                    lastName = null,
                     nickName = ""
                 ),
                 interestedCategorySet = hashSetOf(),
-                hasCategorySet = hashSetOf()
+                hasCategorySet = hashSetOf(),
+                userImage = UserImage(
+                    null,
+                    null
+                )
             )
         )
 

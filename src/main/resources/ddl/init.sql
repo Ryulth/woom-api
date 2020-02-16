@@ -13,9 +13,11 @@ CREATE TABLE `User` (
     `interestedCategorySet` longtext,
     `loginType` VARCHAR(255),
     `publicEmail` VARCHAR(255),
-    `firstName` VARCHAR(255),
-    `lastName` VARCHAR(255),
+    `firstName` VARCHAR(255) DEFAULT NULL,
+    `lastName` VARCHAR(255) DEFAULT NULL,
     `nickName` VARCHAR(255),
+    `thumbnailImageUrl` VARCHAR(255) DEFAULT NULL,
+    `profileImageUrl` VARCHAR(255) DEFAULT NULL,
     `woomId` VARCHAR(255),
     PRIMARY KEY (`id`)
 ) engine=InnoDB;

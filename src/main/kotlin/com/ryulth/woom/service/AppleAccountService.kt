@@ -4,6 +4,7 @@ import com.ryulth.woom.domain.AppleUserService
 import com.ryulth.woom.domain.UserService
 import com.ryulth.woom.domain.model.AppleUser
 import com.ryulth.woom.domain.model.User
+import com.ryulth.woom.domain.model.UserImage
 import com.ryulth.woom.domain.model.UserName
 import com.ryulth.woom.dto.AppleLoginRequest
 import com.ryulth.woom.dto.AppleRegisterRequest
@@ -39,12 +40,16 @@ class AppleAccountService(
                 woomId = appleRegisterRequest.appleId + APPLE_POSTFIX,
                 loginType = appleRegisterRequest.loginType,
                 userName = UserName(
-                    firstName = "",
-                    lastName = "",
+                    firstName = null,
+                    lastName = null,
                     nickName = ""
                 ),
                 interestedCategorySet = hashSetOf(),
-                hasCategorySet = hashSetOf()
+                hasCategorySet = hashSetOf(),
+                userImage = UserImage(
+                    null,
+                    null
+                )
             )
         )
 

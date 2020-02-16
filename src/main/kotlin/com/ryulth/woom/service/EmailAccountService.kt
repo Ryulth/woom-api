@@ -4,6 +4,7 @@ import com.ryulth.woom.domain.EmailUserService
 import com.ryulth.woom.domain.UserService
 import com.ryulth.woom.domain.model.EmailUser
 import com.ryulth.woom.domain.model.User
+import com.ryulth.woom.domain.model.UserImage
 import com.ryulth.woom.domain.model.UserName
 import com.ryulth.woom.dto.EmailLoginRequest
 import com.ryulth.woom.dto.EmailRegisterRequest
@@ -40,12 +41,16 @@ class EmailAccountService(
                 publicEmail = emailRegisterRequest.email,
                 loginType = emailRegisterRequest.loginType,
                 userName = UserName(
-                    firstName = "",
-                    lastName = "",
+                    firstName = null,
+                    lastName = null,
                     nickName = ""
                 ),
                 interestedCategorySet = hashSetOf(),
-                hasCategorySet = hashSetOf()
+                hasCategorySet = hashSetOf(),
+                userImage = UserImage(
+                    null,
+                    null
+                )
             )
         )
 
