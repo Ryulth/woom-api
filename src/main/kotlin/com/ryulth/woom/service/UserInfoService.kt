@@ -1,5 +1,6 @@
 package com.ryulth.woom.service
 
+import com.ryulth.woom.domain.CategoryService
 import com.ryulth.woom.domain.UserService
 import com.ryulth.woom.domain.model.User
 import com.ryulth.woom.domain.model.UserImage
@@ -14,7 +15,8 @@ import org.springframework.stereotype.Service
 class UserInfoService(
     private val userService: UserService,
     private val userSessionService: UserSessionService,
-    private val categoryInfoService: CategoryInfoService
+    private val categoryInfoService: CategoryInfoService,
+    private val categoryService: CategoryService
 ) {
     companion object : KLogging() {
         fun userToUserInfo(user: User): UserInfo = UserInfo(
@@ -43,6 +45,9 @@ class UserInfoService(
         val hasCategorySetRequest = userCategorySet.hasCategorySet
         if (!hasCategorySetRequest.isNullOrEmpty()) {
             val filteredCategorySet = categoryInfoService.filterCategoryCodeSet(hasCategorySetRequest)
+            user.hasCategorySet.forEach { categoryService.minusUserCount(it) }
+            filteredCategorySet.forEach { categoryService.plusUserCount(it) }
+
             user.hasCategorySet = filteredCategorySet
         }
         val interestedCategorySetRequest = userCategorySet.interestedCategorySet

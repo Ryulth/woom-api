@@ -14,4 +14,10 @@ interface CategoryRepository : JpaRepository<Category, String> {
     @Modifying
     @Query(value = "UPDATE Category c set c.postCount = c.postCount + 1 WHERE c.categoryCode = ?1")
     fun plusPostCountByCategoryCode(categoryCode: String)
+    @Modifying
+    @Query(value = "UPDATE Category c set c.userCount = c.userCount - 1 WHERE c.categoryCode = ?1")
+    fun minusUserCountByCategoryCode(categoryCode: String)
+    @Modifying
+    @Query(value = "UPDATE Category c set c.postCount = c.postCount - 1 WHERE c.categoryCode = ?1")
+    fun minusPostCountByCategoryCode(categoryCode: String)
 }

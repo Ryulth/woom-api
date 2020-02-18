@@ -17,4 +17,12 @@ class CategoryService(
     fun plusPostCount(categoryCode: String) {
         categoryRepository.plusPostCountByCategoryCode(categoryCode)
     }
+
+    fun minusUserCount(categoryCode: String) {
+        categoryRepository.minusUserCountByCategoryCode(categoryCode)
+    }
+
+    fun minusPostCount(categoryCode: String) {
+        categoryRepository.minusPostCountByCategoryCode(categoryCode)
+    }
 }
