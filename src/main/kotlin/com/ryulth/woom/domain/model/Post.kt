@@ -9,8 +9,7 @@ import com.ryulth.woom.util.LocalDateTimeDynamoDBConverter
 import java.time.LocalDateTime
 
 /**
- * DynamoDB lib 안에서 원래 setter 를 이용해서 작업을 해서 var 선언 해야한다.
- * jpa 처럼 생성자용 플러그인이 없어서을 기본값 선언해서 인스턴스화 시킨다.
+ * DynamoDB lib 안에서 uuid id 를 사용할 때 generated 한 값을 invoke 시킬떄 setter가 필요하다
  */
 @DynamoDBTable(tableName = "Post")
 data class Post(
@@ -19,24 +18,24 @@ data class Post(
     var id: String? = null,
 
     @DynamoDBAttribute
-    var authorId: Long = 0,
+    val authorId: Long,
 
     @DynamoDBAttribute
-    var title: String = "",
+    val title: String,
 
     @DynamoDBAttribute
-    var content: String = "",
+    val content: String,
 
     @DynamoDBAttribute
-    var hasCategorySet: MutableSet<String>? = mutableSetOf(),
+    val hasCategorySet: MutableSet<String>?,
 
     @DynamoDBAttribute
-    var wantCategorySet: MutableSet<String>? = mutableSetOf(),
+    val wantCategorySet: MutableSet<String>?,
 
     @DynamoDBAttribute
-    var location: String = "",
+    val location: String,
 
     @DynamoDBAttribute
     @DynamoDBTypeConverted(converter = LocalDateTimeDynamoDBConverter::class)
-    var createdAt: LocalDateTime = LocalDateTime.now()
+    val createdAt: LocalDateTime = LocalDateTime.now()
 )
