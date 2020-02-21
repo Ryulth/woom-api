@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface UserRepository : JpaRepository<User, Long> {
     @Query("SELECT count(*) FROM User u where u.id in :ids")
-    fun countByIds(@Param("ids") ids: List<Long>): Long
+    fun countByIds(@Param("ids") ids: Set<Long>): Long
 }

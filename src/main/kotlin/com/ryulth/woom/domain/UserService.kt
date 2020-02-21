@@ -21,7 +21,7 @@ class UserService(
         return userRepository.findByIdOrNull(userId) ?: throw IllegalArgumentException()
     }
 
-    fun countByUserIds(userIds: List<Long>): Long {
+    fun countByUserIds(userIds: Set<Long>): Long {
         return userRepository.countByIds(userIds)
     }
 }

@@ -5,27 +5,30 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted
 import com.ryulth.woom.dto.ChatRoomType
+import com.ryulth.woom.dto.ChatRoomType.ETC
+import com.ryulth.woom.util.ChatRoomTypeDynamoDBConverter
 import com.ryulth.woom.util.LocalDateTimeDynamoDBConverter
-import org.springframework.data.annotation.Transient
 import java.time.LocalDateTime
+import org.springframework.data.annotation.Transient
 
 @DynamoDBTable(tableName = "ChatRoom")
-data class ChatRoom (
+data class ChatRoom(
     @DynamoDBHashKey
-    val id: Long,
+    var id: Long = 0,
 
     @DynamoDBAttribute
-    val chatRoomType: ChatRoomType,
+    @DynamoDBTypeConverted(converter = ChatRoomTypeDynamoDBConverter::class)
+    var chatRoomType: ChatRoomType = ETC,
 
     @DynamoDBAttribute
-    val brokerChannel: String,
+    var brokerChannel: String = "",
 
     @DynamoDBAttribute
-    val joinUserIds: MutableSet<Long>?,
+    var joinUserIds: MutableSet<Long> = mutableSetOf(),
 
     @DynamoDBAttribute
     @DynamoDBTypeConverted(converter = LocalDateTimeDynamoDBConverter::class)
-    val createdAt: LocalDateTime = LocalDateTime.now()
+    var createdAt: LocalDateTime = LocalDateTime.now()
 ) {
     /**
      * id generated 를 위한 key string

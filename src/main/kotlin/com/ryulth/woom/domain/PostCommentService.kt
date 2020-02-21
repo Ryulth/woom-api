@@ -10,7 +10,7 @@ class PostCommentService(
 ) {
     fun findAll() = postCommentRepository.findAll().toList()
 
-    fun save(postComment: PostComment) = postCommentRepository.save(postComment)
+    fun save(postComment: PostComment): PostComment = postCommentRepository.save(postComment)
 
     fun findAllByPostId(postId: String) = postCommentRepository.findAllByPostId(postId)
 }

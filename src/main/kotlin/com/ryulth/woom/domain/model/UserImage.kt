@@ -1,7 +1,7 @@
 package com.ryulth.woom.domain.model
 
-import org.hibernate.annotations.Formula
 import javax.persistence.Embeddable
+import org.hibernate.annotations.Formula
 
 @Embeddable
 data class UserImage(

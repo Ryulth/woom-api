@@ -43,3 +43,10 @@ aws dynamodb create-table \
         AttributeName=id,KeyType=HASH \
         AttributeName=chatRoomId,KeyType=RANGE \
     --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
+aws dynamodb create-table \
+    --table-name UserChatRoom \
+    --attribute-definitions \
+        AttributeName=userId,AttributeType=N \
+    --key-schema \
+        AttributeName=userId,KeyType=HASH \
+    --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1

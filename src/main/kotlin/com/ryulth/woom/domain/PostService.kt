@@ -13,7 +13,7 @@ class PostService(
 
     fun findByPostId(postId: String) = postRepository.findByIdOrNull(postId) ?: throw IllegalArgumentException()
 
-    fun save(post: Post) = postRepository.save(post)
+    fun save(post: Post): Post = postRepository.save(post)
 
     fun findAllByCategoryCode(categoryCode: String) =
         postRepository.findAllByCategoryCode(categoryCode)
