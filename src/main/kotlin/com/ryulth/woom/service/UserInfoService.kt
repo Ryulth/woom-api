@@ -20,6 +20,7 @@ class UserInfoService(
 ) {
     companion object : KLogging() {
         fun userToUserInfo(user: User): UserInfo = UserInfo(
+            userId = user.id!!,
             woomId = user.woomId,
             loginType = user.loginType,
             firstName = user.userName.firstName,

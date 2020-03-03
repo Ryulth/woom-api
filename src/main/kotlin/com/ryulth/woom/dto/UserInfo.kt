@@ -1,6 +1,7 @@
 package com.ryulth.woom.dto
 
 data class UserInfo(
+    val userId: Long,
     val woomId: String,
     val loginType: LoginType,
 
