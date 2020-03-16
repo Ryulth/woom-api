@@ -23,7 +23,7 @@ class PostInfoService(
 ) {
     companion object : KLogging() {
         fun postToPostInfo(post: Post, postCommentInfos: List<PostCommentInfo>): PostInfo = PostInfo(
-            postId = post.id,
+            postId = post.id!!,
             authorId = post.authorId,
             title = post.title,
             content = post.content,
@@ -49,7 +49,7 @@ class PostInfoService(
         val postInfos = mutableListOf<PostInfo>()
 
         posts.forEach {
-            postInfos.add(this.getPostById(it.id))
+            postInfos.add(this.getPostById(it.id!!))
         }
 
         return PostInfos(postInfos)
