@@ -221,3 +221,5 @@ gradle-app.setting
 **/build/
 
 # End of https://www.gitignore.io/api/java,macos,maven,kotlin,intellij,gradle,windows
+
+application-dev.properties

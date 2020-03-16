@@ -28,7 +28,11 @@ data class ChatRoom(
 
     @DynamoDBAttribute
     @DynamoDBTypeConverted(converter = LocalDateTimeDynamoDBConverter::class)
-    var createdAt: LocalDateTime = LocalDateTime.now()
+    var createdAt: LocalDateTime = LocalDateTime.now(),
+
+    @DynamoDBAttribute
+    @DynamoDBTypeConverted(converter = LocalDateTimeDynamoDBConverter::class)
+    var updatedAt: LocalDateTime = LocalDateTime.now()
 ) {
     /**
      * id generated 를 위한 key string
