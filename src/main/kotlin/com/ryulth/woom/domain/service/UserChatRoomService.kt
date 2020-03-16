@@ -1,7 +1,7 @@
-package com.ryulth.woom.domain
+package com.ryulth.woom.domain.service
 
 import com.ryulth.woom.domain.model.UserChatRoom
-import com.ryulth.woom.domain.repository.UserChatRoomRepository
+import com.ryulth.woom.domain.repository.dynamodb.UserChatRoomRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 

@@ -1,7 +1,7 @@
-package com.ryulth.woom.domain
+package com.ryulth.woom.domain.service
 
 import com.ryulth.woom.domain.model.Post
-import com.ryulth.woom.domain.repository.PostRepository
+import com.ryulth.woom.domain.repository.dynamodb.PostRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
@@ -14,7 +14,4 @@ class PostService(
     fun findByPostId(postId: String) = postRepository.findByIdOrNull(postId) ?: throw IllegalArgumentException()
 
     fun save(post: Post): Post = postRepository.save(post)
-
-    fun findAllByCategoryCode(categoryCode: String) =
-        postRepository.findAllByCategoryCode(categoryCode)
 }

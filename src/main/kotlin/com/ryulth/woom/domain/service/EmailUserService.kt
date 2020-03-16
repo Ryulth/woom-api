@@ -1,7 +1,7 @@
-package com.ryulth.woom.domain
+package com.ryulth.woom.domain.service
 
 import com.ryulth.woom.domain.model.EmailUser
-import com.ryulth.woom.domain.repository.EmailUserRepository
+import com.ryulth.woom.domain.repository.jpa.EmailUserRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 

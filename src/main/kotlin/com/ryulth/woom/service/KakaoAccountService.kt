@@ -1,7 +1,7 @@
 package com.ryulth.woom.service
 
-import com.ryulth.woom.domain.KakaoUserService
-import com.ryulth.woom.domain.UserService
+import com.ryulth.woom.domain.service.KakaoUserService
+import com.ryulth.woom.domain.service.UserService
 import com.ryulth.woom.domain.model.KakaoUser
 import com.ryulth.woom.domain.model.User
 import com.ryulth.woom.domain.model.UserImage
@@ -18,10 +18,10 @@ import org.springframework.stereotype.Service
 
 @Service
 class KakaoAccountService(
-    private val userService: UserService,
-    private val kakaoUserService: KakaoUserService,
-    private val kakaoVerifyService: KakaoVerifyService,
-    tokenProvider: TokenProvider
+        private val userService: UserService,
+        private val kakaoUserService: KakaoUserService,
+        private val kakaoVerifyService: KakaoVerifyService,
+        tokenProvider: TokenProvider
 ) : AccountService(tokenProvider) {
 
     companion object {

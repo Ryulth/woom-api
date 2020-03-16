@@ -1,13 +1,13 @@
-package com.ryulth.woom.domain
+package com.ryulth.woom.domain.service
 
 import com.ryulth.woom.domain.model.Message
-import com.ryulth.woom.domain.repository.MessageRepository
+import com.ryulth.woom.domain.repository.dynamodb.MessageRepository
 import org.springframework.stereotype.Service
 
 @Service
 class MessageService(
-    private val messageRepository: MessageRepository,
-    private val dynamoDBSequenceGenerator: DynamoDBSequenceGenerator
+        private val messageRepository: MessageRepository,
+        private val dynamoDBSequenceGenerator: DynamoDBSequenceGenerator
 ) {
     fun generateSequenceNo(chatRoomId: Long) =
         dynamoDBSequenceGenerator.generateSequence("${Message.SEQUENCE_NAME}@$chatRoomId")

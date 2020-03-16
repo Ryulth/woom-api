@@ -1,7 +1,7 @@
 package com.ryulth.woom.service
 
-import com.ryulth.woom.domain.EmailUserService
-import com.ryulth.woom.domain.UserService
+import com.ryulth.woom.domain.service.EmailUserService
+import com.ryulth.woom.domain.service.UserService
 import com.ryulth.woom.domain.model.EmailUser
 import com.ryulth.woom.domain.model.User
 import com.ryulth.woom.domain.model.UserImage
@@ -19,9 +19,9 @@ import org.springframework.stereotype.Service
 
 @Service
 class EmailAccountService(
-    private val userService: UserService,
-    private val emailUserService: EmailUserService,
-    tokenProvider: TokenProvider
+        private val userService: UserService,
+        private val emailUserService: EmailUserService,
+        tokenProvider: TokenProvider
 ) : AccountService(tokenProvider) {
 
     companion object {

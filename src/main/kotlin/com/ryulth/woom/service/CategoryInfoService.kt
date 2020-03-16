@@ -1,6 +1,6 @@
 package com.ryulth.woom.service
 
-import com.ryulth.woom.domain.CategoryService
+import com.ryulth.woom.domain.service.CategoryService
 import com.ryulth.woom.domain.model.Category
 import com.ryulth.woom.dto.CategoryInfo
 import mu.KLogging

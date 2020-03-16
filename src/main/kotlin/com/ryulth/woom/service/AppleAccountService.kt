@@ -1,7 +1,7 @@
 package com.ryulth.woom.service
 
-import com.ryulth.woom.domain.AppleUserService
-import com.ryulth.woom.domain.UserService
+import com.ryulth.woom.domain.service.AppleUserService
+import com.ryulth.woom.domain.service.UserService
 import com.ryulth.woom.domain.model.AppleUser
 import com.ryulth.woom.domain.model.User
 import com.ryulth.woom.domain.model.UserImage
@@ -19,10 +19,10 @@ import org.springframework.stereotype.Service
 
 @Service
 class AppleAccountService(
-    private val userService: UserService,
-    private val appleUserService: AppleUserService,
-    private val appleVerifyService: AppleVerifyService,
-    tokenProvider: TokenProvider
+        private val userService: UserService,
+        private val appleUserService: AppleUserService,
+        private val appleVerifyService: AppleVerifyService,
+        tokenProvider: TokenProvider
 ) : AccountService(tokenProvider) {
 
     companion object : KLogging() {

@@ -1,7 +1,7 @@
-package com.ryulth.woom.domain
+package com.ryulth.woom.domain.service
 
 import com.ryulth.woom.domain.model.User
-import com.ryulth.woom.domain.repository.UserRepository
+import com.ryulth.woom.domain.repository.jpa.UserRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 

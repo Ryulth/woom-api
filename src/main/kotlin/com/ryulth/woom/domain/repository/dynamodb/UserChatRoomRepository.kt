@@ -1,4 +1,4 @@
-package com.ryulth.woom.domain.repository
+package com.ryulth.woom.domain.repository.dynamodb
 
 import com.ryulth.woom.domain.model.UserChatRoom
 import org.socialsignin.spring.data.dynamodb.repository.EnableScan

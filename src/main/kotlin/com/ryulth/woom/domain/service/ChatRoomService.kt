@@ -1,14 +1,14 @@
-package com.ryulth.woom.domain
+package com.ryulth.woom.domain.service
 
 import com.ryulth.woom.domain.model.ChatRoom
-import com.ryulth.woom.domain.repository.ChatRoomRepository
+import com.ryulth.woom.domain.repository.dynamodb.ChatRoomRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
 class ChatRoomService(
-    private val chatRoomRepository: ChatRoomRepository,
-    private val dynamoDBSequenceGenerator: DynamoDBSequenceGenerator
+        private val chatRoomRepository: ChatRoomRepository,
+        private val dynamoDBSequenceGenerator: DynamoDBSequenceGenerator
 ) {
     fun generateSequenceId() = dynamoDBSequenceGenerator.generateSequence(ChatRoom.SEQUENCE_NAME)
 

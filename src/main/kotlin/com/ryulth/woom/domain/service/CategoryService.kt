@@ -1,7 +1,7 @@
-package com.ryulth.woom.domain
+package com.ryulth.woom.domain.service
 
 import com.ryulth.woom.domain.model.Category
-import com.ryulth.woom.domain.repository.CategoryRepository
+import com.ryulth.woom.domain.repository.jpa.CategoryRepository
 import org.springframework.stereotype.Service
 
 @Service

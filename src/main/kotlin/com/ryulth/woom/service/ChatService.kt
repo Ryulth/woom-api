@@ -1,9 +1,9 @@
 package com.ryulth.woom.service
 
 import com.google.common.collect.Lists
-import com.ryulth.woom.domain.ChatRoomService
-import com.ryulth.woom.domain.UserChatRoomService
-import com.ryulth.woom.domain.UserService
+import com.ryulth.woom.domain.service.ChatRoomService
+import com.ryulth.woom.domain.service.UserChatRoomService
+import com.ryulth.woom.domain.service.UserService
 import com.ryulth.woom.domain.model.ChatRoom
 import com.ryulth.woom.domain.model.UserChatRoom
 import com.ryulth.woom.dto.ChatRoomInfo
@@ -21,11 +21,11 @@ import org.springframework.stereotype.Service
 
 @Service
 class ChatService(
-    private val userSessionService: UserSessionService,
-    private val chatRoomService: ChatRoomService,
-    private val userService: UserService,
-    private val userChatRoomService: UserChatRoomService,
-    @Value("\${mqtt.url}")
+        private val userSessionService: UserSessionService,
+        private val chatRoomService: ChatRoomService,
+        private val userService: UserService,
+        private val userChatRoomService: UserChatRoomService,
+        @Value("\${mqtt.url}")
     val brokerURL: String
 ) {
     companion object {

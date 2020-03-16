@@ -1,8 +1,8 @@
 package com.ryulth.woom.service
 
-import com.ryulth.woom.domain.CategoryService
-import com.ryulth.woom.domain.PostCommentService
-import com.ryulth.woom.domain.PostService
+import com.ryulth.woom.domain.service.CategoryService
+import com.ryulth.woom.domain.service.PostCommentService
+import com.ryulth.woom.domain.service.PostService
 import com.ryulth.woom.domain.model.Post
 import com.ryulth.woom.domain.model.PostComment
 import com.ryulth.woom.dto.PostCommentCreateRequest
@@ -15,11 +15,11 @@ import org.springframework.stereotype.Service
 
 @Service
 class PostInfoService(
-    private val postService: PostService,
-    private val categoryInfoService: CategoryInfoService,
-    private val categoryService: CategoryService,
-    private val postCommentService: PostCommentService,
-    private val userSessionService: UserSessionService
+        private val postService: PostService,
+        private val categoryInfoService: CategoryInfoService,
+        private val categoryService: CategoryService,
+        private val postCommentService: PostCommentService,
+        private val userSessionService: UserSessionService
 ) {
     companion object : KLogging() {
         fun postToPostInfo(post: Post, postCommentInfos: List<PostCommentInfo>): PostInfo = PostInfo(

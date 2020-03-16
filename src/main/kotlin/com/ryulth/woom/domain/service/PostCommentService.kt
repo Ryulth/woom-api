@@ -1,7 +1,7 @@
-package com.ryulth.woom.domain
+package com.ryulth.woom.domain.service
 
 import com.ryulth.woom.domain.model.PostComment
-import com.ryulth.woom.domain.repository.PostCommentRepository
+import com.ryulth.woom.domain.repository.dynamodb.PostCommentRepository
 import org.springframework.stereotype.Service
 
 @Service

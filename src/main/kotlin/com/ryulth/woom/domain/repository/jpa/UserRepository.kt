@@ -1,4 +1,4 @@
-package com.ryulth.woom.domain.repository
+package com.ryulth.woom.domain.repository.jpa
 
 import com.ryulth.woom.domain.model.User
 import org.springframework.data.jpa.repository.JpaRepository

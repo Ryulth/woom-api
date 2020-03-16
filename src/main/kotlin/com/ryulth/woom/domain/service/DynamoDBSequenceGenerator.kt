@@ -1,4 +1,4 @@
-package com.ryulth.woom.domain
+package com.ryulth.woom.domain.service
 
 import com.amazonaws.services.dynamodbv2.document.DynamoDB
 import com.amazonaws.services.dynamodbv2.document.PrimaryKey

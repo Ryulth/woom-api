@@ -1,7 +1,7 @@
-package com.ryulth.woom.domain
+package com.ryulth.woom.domain.service
 
 import com.ryulth.woom.domain.model.KakaoUser
-import com.ryulth.woom.domain.repository.KakaoUserRepository
+import com.ryulth.woom.domain.repository.jpa.KakaoUserRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 

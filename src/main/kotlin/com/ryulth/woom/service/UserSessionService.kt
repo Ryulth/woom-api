@@ -1,6 +1,6 @@
 package com.ryulth.woom.service
 
-import com.ryulth.woom.domain.UserService
+import com.ryulth.woom.domain.service.UserService
 import com.ryulth.woom.domain.model.User
 import com.ryulth.woom.dto.UserSession
 import kotlin.concurrent.getOrSet
