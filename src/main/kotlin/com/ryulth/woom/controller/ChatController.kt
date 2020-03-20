@@ -1,6 +1,5 @@
 package com.ryulth.woom.controller
 
-import com.fasterxml.jackson.core.JsonProcessingException
 import com.ryulth.woom.domain.model.ChatRoom
 import com.ryulth.woom.domain.model.Message
 import com.ryulth.woom.dto.ChatRoomsInfos

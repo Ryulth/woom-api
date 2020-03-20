@@ -1,7 +1,5 @@
 package com.ryulth.woom.config
 
-import com.amazonaws.auth.AWSCredentials
-import com.amazonaws.auth.AWSCredentialsProvider
 import com.amazonaws.auth.AWSStaticCredentialsProvider
 import com.amazonaws.auth.BasicAWSCredentials
 import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration
@@ -18,14 +16,13 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Primary
 
-
 @Configuration
 @EnableDynamoDBRepositories(basePackages = ["com.ryulth.woom.domain.repository.dynamodb"])
 class DynamoDBConfig(
-    @Value("\${amazon.dynamodb.endpoint}")
+    @Value("\${amazon.dynamodb.url}")
     private val amazonDynamoDBEndpoint: String,
-    @Value("\${amazon.dynamodb.region}")
-    private val amazonDynamoDbRegion: String,
+    @Value("\${amazon.aws.region}")
+    private val amazonAWSRegion: String,
     @Value("\${amazon.aws.accesskey}")
     private val amazonAWSAccessKey: String,
     @Value("\${amazon.aws.secretkey}")
@@ -38,7 +35,7 @@ class DynamoDBConfig(
     fun amazonDynamoDB(): AmazonDynamoDB {
         return AmazonDynamoDBClientBuilder.standard()
                 .withCredentials(AWSStaticCredentialsProvider(BasicAWSCredentials(amazonAWSAccessKey, amazonAWSSecretKey)))
-                .withEndpointConfiguration(EndpointConfiguration(amazonDynamoDBEndpoint, amazonDynamoDbRegion)).build()
+                .withEndpointConfiguration(EndpointConfiguration(amazonDynamoDBEndpoint, amazonAWSRegion)).build()
     }
 
     @Bean
@@ -58,5 +55,4 @@ class DynamoDBConfig(
     fun dynamoDbMapper(amazonDynamoDb: AmazonDynamoDB, dynamoDBMapperConfig: DynamoDBMapperConfig): DynamoDBMapper {
         return DynamoDBMapper(amazonDynamoDb, dynamoDBMapperConfig)
     }
-
 }

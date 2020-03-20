@@ -1,6 +1,5 @@
 package com.ryulth.woom.dto
 
-
 data class ChatRoomInfo(
     val chatRoomId: Long,
     val chatRoomType: ChatRoomType,

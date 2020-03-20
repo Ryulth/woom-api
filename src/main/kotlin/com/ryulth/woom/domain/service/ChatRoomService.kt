@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service
 
 @Service
 class ChatRoomService(
-        private val chatRoomRepository: ChatRoomRepository,
-        private val dynamoDBSequenceGenerator: DynamoDBSequenceGenerator
+    private val chatRoomRepository: ChatRoomRepository,
+    private val dynamoDBSequenceGenerator: DynamoDBSequenceGenerator
 ) {
     fun generateSequenceId() = dynamoDBSequenceGenerator.generateSequence(ChatRoom.SEQUENCE_NAME)
 

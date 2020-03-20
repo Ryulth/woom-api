@@ -1,9 +1,9 @@
 package com.ryulth.woom.service
 
-import com.ryulth.woom.domain.service.CategoryService
-import com.ryulth.woom.domain.service.UserService
 import com.ryulth.woom.domain.model.User
 import com.ryulth.woom.domain.model.UserImage
+import com.ryulth.woom.domain.service.CategoryService
+import com.ryulth.woom.domain.service.UserService
 import com.ryulth.woom.dto.UserAboutMe
 import com.ryulth.woom.dto.UserCategorySet
 import com.ryulth.woom.dto.UserImageInfo
@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service
 
 @Service
 class UserInfoService(
-        private val userService: UserService,
-        private val userSessionService: UserSessionService,
-        private val categoryInfoService: CategoryInfoService,
-        private val categoryService: CategoryService
+    private val userService: UserService,
+    private val userSessionService: UserSessionService,
+    private val categoryInfoService: CategoryInfoService,
+    private val categoryService: CategoryService
 ) {
     companion object : KLogging() {
         fun userToUserInfo(user: User): UserInfo = UserInfo(

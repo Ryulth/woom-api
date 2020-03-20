@@ -24,7 +24,7 @@ class PostController(
 ) {
     @ApiOperation(value = "Get post ", notes = "category code 가 없으면 전체 검 ")
     @GetMapping
-    fun getPosts2(@RequestParam("categoryCode", required = false)categoryCode: String?): ResponseEntity<PostInfos> {
+    fun getPost(@RequestParam("categoryCode", required = false)categoryCode: String?): ResponseEntity<PostInfos> {
         return ResponseEntity.ok(postInfoService.getPosts(categoryCode))
     }
 

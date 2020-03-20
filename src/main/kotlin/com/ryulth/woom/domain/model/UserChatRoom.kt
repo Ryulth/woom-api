@@ -3,13 +3,9 @@ package com.ryulth.woom.domain.model
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverted
 import com.ryulth.woom.dto.ChatRoomType
 import com.ryulth.woom.dto.ChatRoomType.DIRECT
 import com.ryulth.woom.dto.ChatRoomType.GROUP
-import com.ryulth.woom.util.LocalDateTimeDynamoDBConverter
-import org.hibernate.annotations.Formula
-import java.time.LocalDateTime
 
 @DynamoDBTable(tableName = "UserChatRoom")
 data class UserChatRoom(

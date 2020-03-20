@@ -1,11 +1,11 @@
 package com.ryulth.woom.service
 
 import com.google.common.collect.Lists
+import com.ryulth.woom.domain.model.ChatRoom
+import com.ryulth.woom.domain.model.UserChatRoom
 import com.ryulth.woom.domain.service.ChatRoomService
 import com.ryulth.woom.domain.service.UserChatRoomService
 import com.ryulth.woom.domain.service.UserService
-import com.ryulth.woom.domain.model.ChatRoom
-import com.ryulth.woom.domain.model.UserChatRoom
 import com.ryulth.woom.dto.ChatRoomInfo
 import com.ryulth.woom.dto.ChatRoomType
 import com.ryulth.woom.dto.ChatRoomType.DIRECT
@@ -14,18 +14,18 @@ import com.ryulth.woom.dto.ChatRoomsInfos
 import com.ryulth.woom.dto.CreateChatRoomRequest
 import com.ryulth.woom.util.EnumUtils.calcChatRoomType
 import com.ryulth.woom.util.StringUtils.formatBrokerChannel
-import org.springframework.beans.factory.annotation.Value
 import java.util.function.Consumer
 import java.util.stream.Collectors
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 
 @Service
 class ChatService(
-        private val userSessionService: UserSessionService,
-        private val chatRoomService: ChatRoomService,
-        private val userService: UserService,
-        private val userChatRoomService: UserChatRoomService,
-        @Value("\${mqtt.url}")
+    private val userSessionService: UserSessionService,
+    private val chatRoomService: ChatRoomService,
+    private val userService: UserService,
+    private val userChatRoomService: UserChatRoomService,
+    @Value("\${mqtt.url}")
     val brokerURL: String
 ) {
     companion object {

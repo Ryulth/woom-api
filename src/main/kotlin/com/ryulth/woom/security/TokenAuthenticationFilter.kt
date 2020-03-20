@@ -12,7 +12,7 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.util.matcher.RequestMatcher
 
 class TokenAuthenticationFilter(
-    private val requestMatcher: RequestMatcher
+    requestMatcher: RequestMatcher
 ) : AbstractAuthenticationProcessingFilter(requestMatcher) {
 
     companion object {

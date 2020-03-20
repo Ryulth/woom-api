@@ -1,10 +1,10 @@
 package com.ryulth.woom.service
 
+import com.ryulth.woom.domain.model.Post
+import com.ryulth.woom.domain.model.PostComment
 import com.ryulth.woom.domain.service.CategoryService
 import com.ryulth.woom.domain.service.PostCommentService
 import com.ryulth.woom.domain.service.PostService
-import com.ryulth.woom.domain.model.Post
-import com.ryulth.woom.domain.model.PostComment
 import com.ryulth.woom.dto.PostCommentCreateRequest
 import com.ryulth.woom.dto.PostCommentInfo
 import com.ryulth.woom.dto.PostCreateRequest
@@ -15,11 +15,11 @@ import org.springframework.stereotype.Service
 
 @Service
 class PostInfoService(
-        private val postService: PostService,
-        private val categoryInfoService: CategoryInfoService,
-        private val categoryService: CategoryService,
-        private val postCommentService: PostCommentService,
-        private val userSessionService: UserSessionService
+    private val postService: PostService,
+    private val categoryInfoService: CategoryInfoService,
+    private val categoryService: CategoryService,
+    private val postCommentService: PostCommentService,
+    private val userSessionService: UserSessionService
 ) {
     companion object : KLogging() {
         fun postToPostInfo(post: Post, postCommentInfos: List<PostCommentInfo>): PostInfo = PostInfo(
@@ -44,15 +44,13 @@ class PostInfoService(
     }
 
     // TODO paging
-    fun getPosts(postCategory: String?): PostInfos {
-        val posts = postService.findAll()
-        val postInfos = mutableListOf<PostInfo>()
-
-        posts.forEach {
-            postInfos.add(this.getPostById(it.id!!))
+    fun getPosts(categoryCode: String?): PostInfos {
+        val isWoomCategory = categoryCode?.let { categoryInfoService.checkCategoryCode(it) } ?: false
+        return if (isWoomCategory) {
+            PostInfos(postService.findAllByHasCategory(categoryCode!!).map { this.getPostById(it.id!!) }.toList())
+        } else {
+            PostInfos(postService.findAll().map { this.getPostById(it.id!!) }.toList())
         }
-
-        return PostInfos(postInfos)
     }
 
     fun createPost(postCreateRequest: PostCreateRequest): PostInfo {

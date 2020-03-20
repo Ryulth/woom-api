@@ -1,7 +1,7 @@
 package com.ryulth.woom.service
 
-import com.ryulth.woom.domain.service.KakaoUserService
 import com.ryulth.woom.domain.model.KakaoUser
+import com.ryulth.woom.domain.service.KakaoUserService
 import com.ryulth.woom.dto.KakaoTokenInfoResponse
 import mu.KLogging
 import org.springframework.security.authentication.BadCredentialsException

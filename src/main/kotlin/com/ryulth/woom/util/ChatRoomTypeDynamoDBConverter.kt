@@ -11,5 +11,4 @@ class ChatRoomTypeDynamoDBConverter : DynamoDBTypeConverter<String, ChatRoomType
     override fun unconvert(source: String): ChatRoomType {
         return ChatRoomType.valueOf(source)
     }
-
 }
