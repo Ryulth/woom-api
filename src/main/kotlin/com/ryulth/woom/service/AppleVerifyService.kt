@@ -25,7 +25,7 @@ class AppleVerifyService(
     }
 
     fun verifyAccessToken(appleUser: AppleUser, accessToken: String): Boolean {
-        if (appleUser.lastAccessToken == accessToken) {
+        if (appleUser.lastAccessToken.isNotEmpty() && appleUser.lastAccessToken == accessToken) {
             return true
         }
         try {

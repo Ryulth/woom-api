@@ -7,15 +7,19 @@ import com.ryulth.woom.dto.Token
 import com.ryulth.woom.dto.UserSession
 import com.ryulth.woom.security.TokenProvider
 import com.ryulth.woom.util.AccountAlreadyExistException
+import mu.KLogging
 
 abstract class AccountService(
     private val tokenProvider: TokenProvider
 ) {
+    companion object: KLogging()
+
     fun register(registerRequest: RegisterRequest): Token {
         if (isExistAccount(registerRequest)) {
             throw AccountAlreadyExistException("Account Duplicated")
         }
         val user: User = registerAccount(registerRequest)
+        logger.info { "New user registered : $user" }
         return tokenProvider.generatedToken(
             UserSession(
                 userId = user.id!!,

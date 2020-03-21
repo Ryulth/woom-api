@@ -14,7 +14,7 @@ class KakaoVerifyService(
 ) {
     companion object : KLogging()
     fun verifyAccessToken(kakaoUser: KakaoUser, accessToken: String): Boolean {
-        if (kakaoUser.lastAccessToken == accessToken) {
+        if (kakaoUser.lastAccessToken.isNotEmpty() && kakaoUser.lastAccessToken == accessToken) {
             logger.info { "Last accessToken 과 동일합니다." }
             return true
         }

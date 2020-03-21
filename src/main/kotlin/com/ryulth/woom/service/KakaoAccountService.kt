@@ -13,6 +13,7 @@ import com.ryulth.woom.dto.RegisterRequest
 import com.ryulth.woom.dto.UserSession
 import com.ryulth.woom.security.TokenProvider
 import com.ryulth.woom.util.StringUtils
+import com.ryulth.woom.util.StringUtils.EMPTY_STRING
 import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.stereotype.Service
 
@@ -52,15 +53,15 @@ class KakaoAccountService(
             )
         )
 
-        val kakaoUser = KakaoUser(
+        val newKakaoUser = KakaoUser(
             kakaoId = kakaoRegisterRequest.kakaoId,
             kakaoEmail = kakaoRegisterRequest.kakaoEmail,
-            lastAccessToken = kakaoRegisterRequest.accessToken,
+            lastAccessToken = EMPTY_STRING,
             userId = user.id!!
         )
 
-        if (kakaoVerifyService.verifyAccessToken(kakaoUser, kakaoRegisterRequest.accessToken)) {
-            kakaoUserService.save(kakaoUser)
+        if (kakaoVerifyService.verifyAccessToken(newKakaoUser, kakaoRegisterRequest.accessToken)) {
+            kakaoUserService.save(newKakaoUser)
         }
 
         return user
@@ -77,6 +78,6 @@ class KakaoAccountService(
                 loginType = user.loginType
             )
         }
-        throw BadCredentialsException("Apple token invalid")
+        throw BadCredentialsException("Kakao token invalid")
     }
 }

@@ -12,6 +12,7 @@ import com.ryulth.woom.dto.LoginRequest
 import com.ryulth.woom.dto.RegisterRequest
 import com.ryulth.woom.dto.UserSession
 import com.ryulth.woom.security.TokenProvider
+import com.ryulth.woom.util.StringUtils.EMPTY_STRING
 import com.ryulth.woom.util.StringUtils.WOOM_POSTFIX
 import mu.KLogging
 import org.springframework.security.authentication.BadCredentialsException
@@ -53,15 +54,15 @@ class AppleAccountService(
             )
         )
 
-        val appleUser = AppleUser(
+        val newAppleUser = AppleUser(
             appleId = appleRegisterRequest.appleId,
             appleEmail = appleRegisterRequest.appleEmail,
-            lastAccessToken = appleRegisterRequest.accessToken,
+            lastAccessToken = EMPTY_STRING,
             userId = user.id!!
         )
 
-        if (appleVerifyService.verifyAccessToken(appleUser, appleRegisterRequest.accessToken)) {
-            appleUserService.save(appleUser)
+        if (appleVerifyService.verifyAccessToken(newAppleUser, appleRegisterRequest.accessToken)) {
+            appleUserService.save(newAppleUser)
         }
 
         return user
