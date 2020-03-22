@@ -25,6 +25,6 @@ class KakaoVerifyService(
             kakaoUserService.save(kakaoUser)
             return true
         }
-        throw BadCredentialsException("Request kakao token is invalid")
+        throw BadCredentialsException("Request kakao token is invalid userId : ${kakaoUser.userId} accessToken : $accessToken")
     }
 }

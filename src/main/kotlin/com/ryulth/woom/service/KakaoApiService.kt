@@ -17,9 +17,9 @@ class KakaoApiService(
         private const val KAKAO_USER_PROFILE_URL = "$KAKAO_API_BASE_URL/v2/user/me"
     }
     fun getKakaoTokenInfo(accessToken: String): KakaoTokenInfoResponse {
-        return webClient.post()
+        return webClient.get()
             .uri(KAKAO_TOKEN_INFO_URL)
-            .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+            .header(HttpHeaders.CONTENT_TYPE,MediaType.APPLICATION_FORM_URLENCODED_VALUE)
             .header(HttpHeaders.AUTHORIZATION, "Bearer $accessToken")
             .retrieve()
             .bodyToMono(KakaoTokenInfoResponse::class.java)
