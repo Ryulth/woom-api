@@ -2,9 +2,11 @@ package com.ryulth.woom.controller
 
 import com.ryulth.woom.dto.PostCommentCreateRequest
 import com.ryulth.woom.dto.PostCommentInfo
+import com.ryulth.woom.dto.PostCommentInfos
 import com.ryulth.woom.dto.PostCreateRequest
 import com.ryulth.woom.dto.PostInfo
 import com.ryulth.woom.dto.PostInfos
+import com.ryulth.woom.service.PostCommentInfoService
 import com.ryulth.woom.service.PostInfoService
 import io.swagger.annotations.ApiOperation
 import org.springframework.http.ResponseEntity
@@ -20,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/posts")
 class PostController(
-    private val postInfoService: PostInfoService
+    private val postInfoService: PostInfoService,
+    private val postCommentInfoService: PostCommentInfoService
 ) {
     @ApiOperation(value = "Get post ", notes = "category code 가 없으면 전체 검 ")
     @GetMapping
@@ -41,13 +44,21 @@ class PostController(
         return ResponseEntity.ok(postInfoService.getPostById(postId))
     }
 
+    @ApiOperation(value = "create comment", notes = "댓글 가져오 ")
+    @GetMapping("/{postId}/comments")
+    fun getPostCommentsByPostId(
+        @PathVariable("postId") postId: String
+    ): ResponseEntity<PostCommentInfos> {
+        return ResponseEntity.ok(postCommentInfoService.getAllPostCommentByPostId(postId))
+    }
+
     @ApiOperation(value = "create comment", notes = "댓글 달기 ")
     @Transactional
-    @PostMapping("/{postId}/comment")
+    @PostMapping("/{postId}/comments")
     fun createComment(
         @PathVariable("postId") postId: String,
         @RequestBody postCommentCreateRequest: PostCommentCreateRequest
     ): ResponseEntity<PostCommentInfo> {
-        return ResponseEntity.ok(postInfoService.createComment(postId, postCommentCreateRequest))
+        return ResponseEntity.ok(postCommentInfoService.createComment(postId, postCommentCreateRequest))
     }
 }

@@ -7,9 +7,8 @@ data class PostInfo(
     val authorId: Long,
     val title: String,
     val content: String,
-    val hasCategorySet: Set<String>?,
-    val wantCategorySet: Set<String>?,
+    val hasCategorySet: Set<String>,
+    val wantCategorySet: Set<String>,
     val location: String,
-    val createdAt: LocalDateTime,
-    val postCommentInfos: List<PostCommentInfo>
+    val createdAt: LocalDateTime
 )

@@ -19,7 +19,7 @@ class KakaoApiService(
     fun getKakaoTokenInfo(accessToken: String): KakaoTokenInfoResponse {
         return webClient.get()
             .uri(KAKAO_TOKEN_INFO_URL)
-            .header(HttpHeaders.CONTENT_TYPE,MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+            .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_FORM_URLENCODED_VALUE)
             .header(HttpHeaders.AUTHORIZATION, "Bearer $accessToken")
             .retrieve()
             .bodyToMono(KakaoTokenInfoResponse::class.java)

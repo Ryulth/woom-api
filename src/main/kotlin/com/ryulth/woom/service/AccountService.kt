@@ -12,7 +12,7 @@ import mu.KLogging
 abstract class AccountService(
     private val tokenProvider: TokenProvider
 ) {
-    companion object: KLogging()
+    companion object : KLogging()
 
     fun register(registerRequest: RegisterRequest): Token {
         if (isExistAccount(registerRequest)) {
